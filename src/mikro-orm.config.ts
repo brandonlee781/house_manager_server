@@ -8,7 +8,7 @@ export default defineConfig({
   dbName: 'house_manager',
   entities: ['dist/**/*.entity.js'],
   entitiesTs: ['src/**/*.entity.ts'],
-  debug: true,
+  debug: process.env.NODE_ENV === 'development',
   migrations: {
     path: 'src/database/migrations',
   },

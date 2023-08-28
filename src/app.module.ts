@@ -6,6 +6,7 @@ import { MysqlDatabaseModule } from './providers/database/MysqlDatabase.module'
 import { GraphQLModule } from '@nestjs/graphql'
 import { ApolloDriver, ApolloDriverConfig } from '@nestjs/apollo'
 import { join } from 'path'
+import { AppConfigModule } from './config/app/configuration.module'
 
 @Module({
   imports: [
@@ -16,6 +17,7 @@ import { join } from 'path'
     }),
     MaintainenceModule,
     DatabaseConfigModule,
+    AppConfigModule,
     MysqlDatabaseModule,
   ],
   controllers: [],
