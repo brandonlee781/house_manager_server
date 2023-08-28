@@ -1,0 +1,41 @@
+# networks:
+#   nest:
+#     driver: bridge
+
+volumes:
+  database:
+
+services:
+  # api:
+  #   container_name: nestjs
+  #   image: nestjs-dev
+  #   restart: unless-stopped
+  #   build:
+  #     context: .
+  #     dockerfile: Dockerfile
+  #     target: dev
+  #   volumes:
+  #     - .:/app
+  #     # This ensures that the NestJS container manages the node_modules folder
+  #     # rather than synchronizes it with the host machines
+  #     # - /app/node_modules
+  #   env_file:
+  #     - docker.env
+  #   ports:
+  #     - 8082:3000
+  #   networks:
+  #     - nest
+  #   command: npx nest start --watch
+  db:
+    container_name: db
+    image: docker.io/library/mariadb:10
+    restart: always
+    # networks:
+    #   - nest
+    ports:
+      - 3306:3306
+    volumes:
+      - database:/var/lib/mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: $MYSQL_PASS
+    

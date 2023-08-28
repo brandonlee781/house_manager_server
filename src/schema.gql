@@ -1,0 +1,49 @@
+# ------------------------------------------------------
+# THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+# ------------------------------------------------------
+
+type Maintainence {
+  id: Int!
+  name: String!
+  previousDate: DateTime
+  nextDate: DateTime!
+  completed: Boolean!
+
+  """Number of days between needing to perform maintainence"""
+  interval: Int!
+  createdDate: DateTime!
+  updatedDate: DateTime!
+}
+
+"""
+A date-time string at UTC, such as 2019-12-03T09:54:33Z, compliant with the date-time format.
+"""
+scalar DateTime
+
+type Query {
+  maintainence(id: Int!): Maintainence!
+  maintainences: [Maintainence!]!
+  maintainenceHistory(id: Int!): [Maintainence!]!
+}
+
+type Mutation {
+  createMaintainence(createMaintainenceData: CreateMaintainenceInput!): Maintainence!
+  updateMaintainence(id: Float!, updateMaintainenceInput: UpdateMaintainenceInput!): Maintainence!
+  deleteMaintainence(id: Float!): Int!
+}
+
+input CreateMaintainenceInput {
+  name: String!
+  nextDate: DateTime!
+  previousDate: DateTime
+  completed: Boolean
+  interval: Float
+}
+
+input UpdateMaintainenceInput {
+  name: String
+  nextDate: DateTime
+  previousDate: DateTime
+  completed: Boolean
+  interval: Float
+}
